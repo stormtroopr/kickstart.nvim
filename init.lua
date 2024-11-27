@@ -411,6 +411,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      vim.keymap.set('n', '<leader>o', ':Telescope oldfiles<CR>', { desc = 'Telescope recent file list' })
 
       -- Neotree with a key binding
       vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>', { desc = 'Toggle Neotree' })
@@ -841,11 +842,23 @@ require('lazy').setup({
     'polirritmico/monokai-nightasty.nvim',
     lazy = false, -- Ensure it loads immediately
     priority = 1000, -- High priority to load it before other plugins
-    init = function()
-      vim.cmd.colorscheme 'monokai-nightasty'
+    --init = function()
+    --vim.cmd.colorscheme 'monokai-nightasty'
+    --end,
+  },
+  {
+    'navarasu/onedark.nvim',
+    lazy = false, -- Ensure it loads immediately
+    priority = 1000, -- High priority to load it before other plugins
+    config = function()
+      require('onedark').setup {
+        style = 'warmer',
+      }
+
+      require('onedark').load()
+      --vim.cmd.colorscheme 'monokai-nightasty'
     end,
   },
-
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is.
@@ -862,6 +875,25 @@ require('lazy').setup({
     -- You can configure highlights by doing something like:
     --  vim.cmd.hi 'Comment gui=none'
     --end,
+  },
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' }, -- Optional: Adds icons to the statusline
+    config = function()
+      require('lualine').setup {
+        options = {
+          theme = 'onedark', -- Automatically adapts to your colorscheme
+          icons_enabled = true, -- Enable file type icons
+          component_separators = '|',
+          section_separators = '',
+        },
+        sections = {
+          lualine_c = {
+            { 'filename', path = 1 }, -- Use `path = 2` for absolute path
+          },
+        },
+      }
+    end,
   },
 
   -- Highlight todo, notes, etc in comments
@@ -888,17 +920,18 @@ require('lazy').setup({
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
-      local statusline = require 'mini.statusline'
+      -- local statusline = require 'mini.statusline'
+
       -- set use_icons to true if you have a Nerd Font
-      statusline.setup { use_icons = vim.g.have_nerd_font }
+      -- statusline.setup { use_icons = vim.g.have_nerd_font }
 
       -- You can configure sections in the statusline by overriding their
       -- default behavior. For example, here we set the section for
       -- cursor location to LINE:COLUMN
       ---@diagnostic disable-next-line: duplicate-set-field
-      statusline.section_location = function()
-        return '%2l:%-2v'
-      end
+      --statusline.section_location = function()
+      --  return '%2l:%-2v'
+      --end
 
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
