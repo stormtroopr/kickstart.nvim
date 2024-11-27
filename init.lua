@@ -838,26 +838,37 @@ require('lazy').setup({
       }
     end,
   },
+  --{
+  --'polirritmico/monokai-nightasty.nvim',
+  --lazy = false, -- Ensure it loads immediately
+  --priority = 1000, -- High priority to load it before other plugins
+  --init = function()
+  --vim.cmd.colorscheme 'monokai-nightasty'
+  --end,
+  --},
   {
-    'polirritmico/monokai-nightasty.nvim',
+    'tanvirtin/monokai.nvim',
     lazy = false, -- Ensure it loads immediately
     priority = 1000, -- High priority to load it before other plugins
-    --init = function()
-    --vim.cmd.colorscheme 'monokai-nightasty'
-    --end,
+    config = function()
+      require('monokai').setup {
+        palette = require('monokai').pro,
+      }
+
+      --require('onedark').load()
+    end,
   },
   {
     'navarasu/onedark.nvim',
     lazy = false, -- Ensure it loads immediately
     priority = 1000, -- High priority to load it before other plugins
-    config = function()
-      require('onedark').setup {
-        style = 'warmer',
-      }
+    --config = function()
+    --  require('onedark').setup {
+    --  style = 'warmer',
+    --}
 
-      require('onedark').load()
-      --vim.cmd.colorscheme 'monokai-nightasty'
-    end,
+    --require('onedark').load()
+    --end,
   },
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
@@ -882,7 +893,7 @@ require('lazy').setup({
     config = function()
       require('lualine').setup {
         options = {
-          theme = 'onedark', -- Automatically adapts to your colorscheme
+          theme = 'auto', -- Automatically adapts to your colorscheme
           icons_enabled = true, -- Enable file type icons
           component_separators = '|',
           section_separators = '',
