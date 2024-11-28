@@ -342,6 +342,13 @@ require('lazy').setup({
       -- add any options here
     },
   },
+  {
+    'TimUntersberger/neogit',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('neogit').setup()
+    end,
+  },
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
