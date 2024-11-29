@@ -46,4 +46,11 @@ return {
       require('gitsigns').setup()
     end,
   },
+  -- MY KEY BINDINGS..............
+  {
+    -- Navigate down 40 lines
+    vim.api.nvim_set_keymap('n', 'm', '40j', { noremap = true, silent = true }),
+    -- Navigate up 40 lines
+    vim.api.nvim_set_keymap('n', ',', '40k', { noremap = true, silent = true }),
+  },
 }
