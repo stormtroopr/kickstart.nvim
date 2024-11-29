@@ -102,7 +102,7 @@ vim.g.have_nerd_font = true
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -335,20 +335,6 @@ require('lazy').setup({
   -- Use the `dependencies` key to specify the dependencies of a particular plugin
   -- add this to your lua/plugins.lua, lua/plugins/init.lua,  or the file you keep your other plugins:
 
-  -- COMMENT LINES
-  {
-    'numToStr/Comment.nvim',
-    opts = {
-      -- add any options here
-    },
-  },
-  {
-    'TimUntersberger/neogit',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      require('neogit').setup()
-    end,
-  },
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
@@ -856,38 +842,6 @@ require('lazy').setup({
       }
     end,
   },
-  --{
-  --'polirritmico/monokai-nightasty.nvim',
-  --lazy = false, -- Ensure it loads immediately
-  --priority = 1000, -- High priority to load it before other plugins
-  --init = function()
-  --vim.cmd.colorscheme 'monokai-nightasty'
-  --end,
-  --},
-  {
-    'tanvirtin/monokai.nvim',
-    lazy = false, -- Ensure it loads immediately
-    priority = 1000, -- High priority to load it before other plugins
-    config = function()
-      require('monokai').setup {
-        palette = require('monokai').pro,
-      }
-
-      --require('onedark').load()
-    end,
-  },
-  {
-    'navarasu/onedark.nvim',
-    lazy = false, -- Ensure it loads immediately
-    priority = 1000, -- High priority to load it before other plugins
-    --config = function()
-    --  require('onedark').setup {
-    --  style = 'warmer',
-    --}
-
-    --require('onedark').load()
-    --end,
-  },
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is.
@@ -1012,7 +966,7 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
