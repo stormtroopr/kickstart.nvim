@@ -386,7 +386,7 @@ require('lazy').setup({
         --  All the info you're looking for is in `:help telescope.setup()`
         --
         defaults = {
-          file_ignore_patterns = { 'node_modules', '.git' },
+          file_ignore_patterns = { 'node_modules', '.git', '.js.map' },
           --   mappings = {
           --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
           --   },
