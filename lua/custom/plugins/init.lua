@@ -46,6 +46,7 @@ return {
       require('gitsigns').setup()
     end,
   },
+
   -- MY KEY BINDINGS..............
   {
     -- Navigate down 40 lines
