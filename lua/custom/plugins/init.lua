@@ -3,6 +3,10 @@
 --
 -- See the kickstart.nvim README for more information
 return {
+  -- FOLDING...................
+  -- vim.opt.foldmethod="expr",
+  -- vim.opt.foldexpr="nvim_treesitter#foldexpr()"
+
   -- COMMENT CODE..............
   {
     'numToStr/Comment.nvim',
