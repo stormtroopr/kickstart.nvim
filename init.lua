@@ -386,7 +386,16 @@ require('lazy').setup({
         --  All the info you're looking for is in `:help telescope.setup()`
         --
         defaults = {
-          file_ignore_patterns = { '*/', 'node_modules', 'wwwroot/scripts', '.git', '.js.map', 'build' },
+          file_ignore_patterns = {
+            '^%.*/$', -- Ignore all directories
+            'node_modules/', -- Ignore node_modules directory
+            'wwwroot/scripts/',
+            '%.git/',
+            '%.js%.map$', -- Ignore JavaScript map files
+            'build/',
+          },
+
+          --          file_ignore_patterns = { '^.*/$', 'node_modules', 'wwwroot/scripts', '.git', '.js.map', 'build' },
           --   mappings = {
           --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
           --   },
@@ -928,7 +937,7 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'javascript', 'typescript', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -1001,7 +1010,7 @@ vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 
 -- Optional: Start with all folds open
-vim.opt.foldenable = false
+vim.opt.foldenable = true
 vim.opt.foldlevel = 99
 
 -- The line beneath this is called `modeline`. See `:help modeline`
