@@ -107,5 +107,10 @@ return {
     vim.keymap.set('n', '<leader>ll', '<C-w>l', { noremap = true, silent = true }),
     vim.keymap.set('n', '<leader>jj', '<C-w>j', { noremap = true, silent = true }),
     vim.keymap.set('n', '<leader>kk', '<C-w>k', { noremap = true, silent = true }),
+    -- Open a vertical split to the right
+    vim.keymap.set('n', '<leader>v', ':vsplit<CR>', { desc = 'Open vertical split to the right', silent = true }),
+
+    -- Open a horizontal split below
+    vim.keymap.set('n', '<leader>h', ':split<CR>', { desc = 'Open horizontal split below', silent = true }),
   },
 }
