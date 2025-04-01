@@ -113,4 +113,15 @@ return {
     -- Open a horizontal split below
     vim.keymap.set('n', '<leader>h', ':split<CR>', { desc = 'Open horizontal split below', silent = true }),
   },
+  -- Debugging Plugins
+  {
+    'mfussenegger/nvim-dap',
+  },
+  {
+    'rcarriga/nvim-dap-ui',
+    dependencies = { 'nvim-neotest/nvim-nio' },
+  },
+  {
+    'theHamsta/nvim-dap-virtual-text',
+  },
 }
