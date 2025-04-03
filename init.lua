@@ -209,7 +209,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Handle carriage returns
-vim.api.nvim_create_autocmd('BufWritePre', {
+vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufWritePre' }, {
   pattern = '*',
   callback = function()
     vim.bo.fileformat = 'unix'
