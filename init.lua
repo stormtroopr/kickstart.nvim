@@ -98,8 +98,8 @@ vim.g.have_nerd_font = true
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
--- set file formats to unix and dos.
-vim.opt.fileformats = 'unix,dos'
+-- set file formats to unix.
+vim.opt.fileformats = 'unix'
 -- Make line numbers default
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
@@ -209,10 +209,21 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Handle carriage returns
+-- vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufWritePre' }, {
+-- pattern = '*',
+-- callback = function()
+-- vim.bo.fileformat = 'unix'
+-- end,
+-- })
 vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufWritePre' }, {
   pattern = '*',
   callback = function()
-    vim.bo.fileformat = 'unix'
+    -- Only run on actual files (not help, terminals, etc)
+    if vim.bo.buftype == '' then
+      local pos = vim.api.nvim_win_get_cursor(0)
+      vim.cmd [[%s/\r//ge]]
+      vim.api.nvim_win_set_cursor(0, pos)
+    end
   end,
 })
 
