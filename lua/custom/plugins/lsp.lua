@@ -23,5 +23,8 @@ return {
       },
       enable_editorconfig_support = true,
     }
+    lspconfig.ts_ls.setup {
+      root_dir = lspconfig.util.root_pattern('tsconfig.json', '.git'),
+    }
   end,
 }
