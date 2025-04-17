@@ -18,11 +18,12 @@ return {
     lspconfig.omnisharp.setup {
       cmd = {
         'dotnet',
-        vim.fn.expand '~/.local/share/nvim/mason/packages/omnisharp/libexec/OmniSharp.dll',
-        -- vim.fn.expand 'C:\\Users\\marcu\\AppData\\Local\\nvim-data\\mason\\packages\\omnisharp\\libexec\\OmniSharp.dll',
+        -- vim.fn.expand '~/.local/share/nvim/mason/packages/omnisharp/libexec/OmniSharp.dll',
+        vim.fn.expand 'C:\\Users\\marcu\\AppData\\Local\\nvim-data\\mason\\packages\\omnisharp\\libexec\\OmniSharp.dll',
       },
       enable_editorconfig_support = true,
     }
+    -- ts server config
     lspconfig.ts_ls.setup {
       root_dir = lspconfig.util.root_pattern('tsconfig.json', '.git'),
     }
